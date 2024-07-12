@@ -1,27 +1,29 @@
 import React from "react";
+import { Link, Router } from "react-router-dom";
 
 function Header() {
   return (
+    
     <div className="header">
       <ul>
         ⭐
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Games and Activites</a>
+          <Link to="/activities">Games and Activites</Link>
         </li>
         <li>
-          <a href="#">Christmas Traditions</a>
+          <Link to="/traditions">Christmas Traditions</Link>
         </li>
         <li>
-          <a href="#">Gift Planning</a>
+          <Link to="/giftlist">Gift List</Link>
         </li>
         <li>
-          <a href="#">Countdown</a>
+          <Link to="/countdown">Countdown to Christmas</Link>
         </li>
         <li>
-          <a href="#">Christmas Radio</a>
+          <Link to="/contact">Contact Us</Link>
         </li>
         ⭐
       </ul>

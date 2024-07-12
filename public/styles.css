@@ -17,11 +17,6 @@ a:hover {
   text-decoration: underline;
 }
 
-a:visited {
-  color: #fff;
-  text-decoration: none;
-}
-
 .header {
   font-family: "Mountains of christmas", serif;
   position: sticky;
