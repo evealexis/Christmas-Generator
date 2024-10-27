@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=PT+Serif);
 
 body {
-  font-family: "PT serif";
+  font-family: "PT serif", sans-serif;
   background-color: #e5d5bb;
   margin: 0;
   padding: 0;
@@ -15,6 +15,11 @@ a:link {
 a:hover {
   color: #f8b229;
   text-decoration: underline;
+}
+
+a:visited {
+  color: #fff;
+  text-decoration: none;
 }
 
 .header {
@@ -41,6 +46,7 @@ a:hover {
   background-color: #213c18;
   padding: 40px;
   margin-top: 10px;
+  height: auto;
 }
 
 .footer p {
@@ -51,4 +57,24 @@ a:hover {
 
 .page-content {
   margin: 30px;
+}
+
+form {
+  padding: 20px 0;
+  position: relative;
+}
+
+textarea {
+  resize: none;
+  height: 200px;
+  width: 400px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content-wrapper {
+  flex: 1;
 }

@@ -1,6 +1,3 @@
-import React from "react";
-import { Link, Router } from "react-router-dom";
-
 function Header() {
   return (
     
@@ -8,22 +5,13 @@ function Header() {
       <ul>
         ⭐
         <li>
-          <Link to="/">Home</Link>
+          <a href="/">Home</a>
         </li>
         <li>
-          <Link to="/activities">Games and Activites</Link>
+          <a href="/traditions">Christmas Traditions</a>
         </li>
         <li>
-          <Link to="/traditions">Christmas Traditions</Link>
-        </li>
-        <li>
-          <Link to="/giftlist">Gift List</Link>
-        </li>
-        <li>
-          <Link to="/countdown">Countdown to Christmas</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact Us</Link>
+          <a href="/countdown">Countdown to Christmas</a>
         </li>
         ⭐
       </ul>
