@@ -28,18 +28,23 @@ a:visited {
   top: 0;
   background-color: #7b0a0a;
   color: #fff;
+  font-size: 1.3rem;
   margin: 0;
   padding: 5px;
 }
 
 .header li {
   list-style-type: none;
-  display: inline;
-  padding: 10px;
+  padding: 5px;
 }
 
 .header ul {
   text-align: center;
+}
+
+.header p {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .footer {
@@ -56,7 +61,7 @@ a:visited {
 }
 
 .page-content {
-  margin: 30px;
+  margin: 0 5% 0;
   height: 100vh;
 }
 

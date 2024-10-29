@@ -46,7 +46,7 @@ useEffect(() => {
     startCountDown();
 })
     
-    return (<p>There are: {getDays} days {getHours} hours {getMinutes} minutes {getSeconds} seconds left until Christmas!</p>);
+    return (<p>⭐ {getDays}d {getHours}h {getMinutes}m {getSeconds}s left until Christmas! ⭐</p>);
 }
 
 export default Countdown;
