@@ -1,13 +1,12 @@
-import API from "./API"
+import API from "./api/API"
 
 const Content = () => {
 
   return (
     <div className="page-content">
-      <h1>Welcome to Christmas Website!</h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam cum dolore, autem dignissimos numquam, dolorum quisquam itaque perferendis rem impedit dolores facere dicta quia magni officiis amet quasi placeat.</p>
+      <h1>Christmas Activity Generator!</h1>
+      <p>Full of Turkey and all the trimmings? Wondering what to do next? Try the Christmas activity generator below:</p>
         <br />
-        <p>-- Insert Christmas API here --</p>
           <API />
     </div>
   );
