@@ -7,7 +7,6 @@ const App = () => {
   return (
         <Routes>
           <Route path="/" Component={Home} />
-          {/* <Route path="/activities/Random" /> */}
           <Route path="/activities/" Component={Activities} />
           <Route path="/activities/:activityId" />
         </Routes>
