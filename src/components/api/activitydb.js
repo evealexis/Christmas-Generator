@@ -1,3 +1,4 @@
+// Dummy activity array
 
 export const activitydb = [
     {
