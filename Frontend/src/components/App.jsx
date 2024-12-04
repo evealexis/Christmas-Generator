@@ -1,16 +1,13 @@
-import "../index.css"
-import { Route, Routes } from "react-router-dom"
-import Home from "./Home";
-// import Activities from "./api/Activities";
+import Header from "./Header"
+import Footer from "./Footer"
+import Home from "./Home"
 
 const App = () => {
-  return (
-        <Routes>
-          <Route path="/" Component={Home} />
-          {/* <Route path="/activities/" Component={Activities} />
-          <Route path="/activities/:activityId" /> */}
-        </Routes>
-  )
+  return (<div>
+    <Header/>
+    <Home/>
+    <Footer />
+    </div>)
 }
 
 export default App;

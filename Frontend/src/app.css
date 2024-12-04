@@ -1,0 +1,87 @@
+@import url(https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=PT+Serif);
+
+body {
+  font-family: "PT serif", sans-serif;
+  background-color: #e5d5bb;
+  margin: 0;
+  padding: 0;
+}
+
+a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f8b229;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  font-family: "Mountains of christmas", serif;
+  position: sticky;
+  top: 0;
+  background-color: #7b0a0a;
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 0;
+  padding: 5px;
+  z-index: 1;
+}
+
+.header li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.header ul {
+  text-align: center;
+}
+
+.header p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.footer {
+  background-color: #213c18;
+  padding: 40px;
+  margin-top: 10px;
+  height: auto;
+}
+
+.footer p {
+  font-family: "PT Serif", serif;
+  text-align: center;
+  color: #fff;
+}
+
+input {
+  padding: 5px;
+  position: relative;
+}
+
+.page-container {
+  display: flex;
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+  width: 100%;
+}
+
+button {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}

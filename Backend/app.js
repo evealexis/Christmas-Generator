@@ -1,28 +1,75 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const activityRoutes = require('./routes/activities-routes');
-const HttpError = require('./models/http-error')
+const express = require("express");
+const bodyParser = require("body-parser");
+const data = require("./activitydb.json")
+const cors = require("cors");
+const fs = require("node:fs");
 
 const app = express();
 
-app.use(bodyParser.json()); 
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
 
-// Links the other route with the app.js
-app.use('/api/activities', activityRoutes);
-
-
-app.use((req, res, next) => {
-    const error = new HttpError('Could not find this route.', 404);
-    throw error;
+app.get("/", (req, res) => {
+    res.json(data)
 });
 
-app.use((error, req, res, next) => {
-    if (res.headerSent){
-        return next(error); 
-    }
-    res.status(error.code || 500) 
-    res.json({message: error.message || 'An unknown error occurred!'}); 
+app.post("/new", (req, res) => {
+    const newActivity = req.body;
+
+    fs.readFile("./activitydb.json", (err, data) =>{
+        let activities = JSON.parse(data);
+        const newId = activities[activities.length -1].id + 1
+        newActivity.id = newId;
+
+        const orderedActivity = {id: newId, ...newActivity}
+
+        activities.push(orderedActivity)
+
+        fs.writeFile("./activitydb.json", JSON.stringify(activities, 2), "utf8", () => {
+            console.log(orderedActivity);
+            res.json(orderedActivity);
+        });
+    });
 });
 
-app.listen(5000);
+app.delete("/:id", (req, res) => {
+    const currentId = parseInt(req.params.id);
+
+    fs.readFile("./activitydb.json", (err, data) => {
+        let activities = JSON.parse(data);
+        const newAct = activities.filter((activity) => {if(activity.id !== currentId){
+        return true}})
+
+        fs.writeFile("./activitydb.json", JSON.stringify(newAct),(err) => {
+            console.log(newAct)
+        });
+    });
+});
+
+app.patch("/:id", (req, res) => {
+    const updateActivity = req.body;
+    const updateActivityId = parseInt(req.params.id);
+    
+
+    fs.readFile("./activitydb.json", (err, data) => {
+        let activities = JSON.parse(data);
+
+        // find the current activity from old array (creates new array)
+        const updateAct = activities.find(({id}) => (id === updateActivityId));
+
+        updateAct.activity = updateActivity.activity
+        console.log(updateAct)
+
+        // filter the array where all activities are not the current activity
+        const filteredActs = activities.filter(({id}) => id !== updateActivityId);
+
+        filteredActs.push(updateAct);
+
+        fs.writeFile(("./activitydb.json"), JSON.stringify(filteredActs), (err) => {
+        res.json(updateAct)
+        });
+    });
+  
+});
+
