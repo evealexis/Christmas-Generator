@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 const Home = () => {
 
     const [activitydb, setActivitydb] = useState({});
@@ -49,8 +51,7 @@ const Home = () => {
     };
 
     const handleSubmit = async () => {
-        const response = await axios.post("/new", newActivity)
-        console.log(response.data)
+        const response = await axios.post(`${backend_url}/new`, newActivity)
         setNewActivity({id: "", activity: ""});
     };
 
@@ -59,7 +60,7 @@ const Home = () => {
     };
 
     const handleUpdate = async () => {
-        const response = await axios.patch(`/${updateActivity.id}`, updateActivity)
+        const response = await axios.patch(`${backend_url}/${updateActivity.id}`, updateActivity)
         console.log(response.data)
         setActivitydb(response.data);
     };
