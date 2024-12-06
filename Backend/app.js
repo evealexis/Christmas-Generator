@@ -27,7 +27,6 @@ app.post("/new", (req, res) => {
         activities.push(orderedActivity)
 
         fs.writeFile("./activitydb.json", JSON.stringify(activities, 2), "utf8", () => {
-            console.log(orderedActivity);
             res.json(orderedActivity);
         });
     });
@@ -42,7 +41,7 @@ app.delete("/:id", (req, res) => {
         return true}})
 
         fs.writeFile("./activitydb.json", JSON.stringify(newAct),(err) => {
-            console.log(newAct)
+            res.json(newAct)
         });
     });
 });
@@ -75,7 +74,4 @@ app.patch("/:id", (req, res) => {
 
 
 app.listen(3000,() => 
-    console.log("Server ready on port 3000")
-);
-
-module.exports = app;
+    console.log("Server ready on port 3000"));
