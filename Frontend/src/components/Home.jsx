@@ -24,11 +24,9 @@ const Home = () => {
         }
     }, [activitydb]);
 
-
-    const url = "/"
     
     const handleClick = () => {
-        axios.get(url).then((response) => {
+        axios.get(backend_url).then((response) => {
             const obj = response.data;
             const random = Math.floor(Math.random() * obj.length)
             const randomObj = obj[random]
