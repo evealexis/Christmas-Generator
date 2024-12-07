@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-const backend_url = import.meta.env.VITE_BACKEND_URL;
+const backend_url = import.meta.env.VITE_BACKEND_URL.replace(/\/$/, '');
+
+console.log(backend_url);
 
 const Home = () => {
 
