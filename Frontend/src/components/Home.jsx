@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-const backend_url = import.meta.env.VITE_BACKEND_URL.replace(/\/$/, '');
+const backend_url = import.meta.env.VITE_BACKEND_URL;
 
 console.log(backend_url);
 
@@ -27,13 +27,12 @@ const Home = () => {
     }, [activitydb]);
 
     
-    const handleClick = () => {
-        axios.get(backend_url).then((response) => {
+    const handleClick = async () => {
+        const response = await axios.get(backend_url)
             const obj = response.data;
             const random = Math.floor(Math.random() * obj.length)
             const randomObj = obj[random]
-            setActivitydb(randomObj)
-        });
+            setActivitydb(randomObj);
     };
 
     const handleInput = (e) => {
@@ -52,7 +51,7 @@ const Home = () => {
 
     const handleSubmit = async () => {
         const response = await axios.post(`${backend_url}/new`, newActivity)
-        setNewActivity({id: "", activity: ""});
+        setNewActivity(response.data);
     };
 
     const handleDelete = () => {
@@ -61,7 +60,6 @@ const Home = () => {
 
     const handleUpdate = async () => {
         const response = await axios.patch(`${backend_url}/${updateActivity.id}`, updateActivity)
-        console.log(response.data)
         setActivitydb(response.data);
     };
 
@@ -77,6 +75,7 @@ const Home = () => {
                 <button onClick={handleDelete}>Delete Activity</button>
                 {activitydb.activity}
                 {/* Update activity */}
+                <p>Update</p>
                 <label>Update {activitydb.activity}:</label>
                 <input type="text" name="activity" value={updateActivity.activity} onChange={handleUpdateInput}/>
                 <button onClick={handleUpdate}>Update Activity</button>
