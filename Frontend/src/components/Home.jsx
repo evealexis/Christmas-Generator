@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import Update from './Update';
+import Create from "./Create";
 
 const backend_url = import.meta.env.VITE_BACKEND_URL;
 
-console.log(backend_url);
 
 const Home = () => {
 
     const [activitydb, setActivitydb] = useState({});
+    const [updateActivity, setUpdateActivity] = useState({});
+    const [showUpdate, setShowUpdate] = useState(false);
+    const [showCreate, setShowCreate] = useState(false);
+
 
     // For the input
     const [newActivity, setNewActivity] = useState({
         id: activitydb.id,
         activity: ""
     });
-
-    const [updateActivity, setUpdateActivity] = useState({});
 
     useEffect(() => {
         if (activitydb) {
@@ -28,11 +31,20 @@ const Home = () => {
 
     
     const handleClick = async () => {
-        const response = await axios.get(backend_url)
+        try{ 
+            const response = await axios.get(backend_url);
+            
+            if(!response.ok) {
+                console.log("Unable to fetch acitivity");
+            }
             const obj = response.data;
-            const random = Math.floor(Math.random() * obj.length)
-            const randomObj = obj[random]
+            const random = Math.floor(Math.random() * obj.length);
+            const randomObj = obj[random];
             setActivitydb(randomObj);
+        }
+        catch (err){
+            console.log(`Error: ${err}`)
+        }
     };
 
     const handleInput = (e) => {
@@ -63,22 +75,27 @@ const Home = () => {
         setActivitydb(response.data);
     };
 
+    const toggleUpdate = () => {
+        setShowUpdate((showUpdate) => !showUpdate);
+    };
+
+    const toggleCreate = () => {
+        setShowCreate((showCreate) => !showCreate);
+    };
+
     return(
         <div className="page-container">
             <div className="content-wrapper">
             <h1>Christmas Activity Generator!</h1>
             <p>Full of Turkey and all the trimmings? Wondering what to do next? Try the Christmas activity generator below:</p>
-                <label>Create new activity:</label>
-                <input type="text" name="activity" value={newActivity.activity} onChange={handleInput}/>
-                <button onClick={handleSubmit}>Create Activity</button>
+            <button onClick={toggleCreate}>Create New Activity?</button>
+                {/* If showCreate is true then render Create component, othewise keep it hidden */}
+                {showCreate && <Create handleInput={handleInput} handleSubmit={handleSubmit} newActivity={newActivity} />}
                 <button onClick={handleClick}>Get Activity</button>
                 <button onClick={handleDelete}>Delete Activity</button>
                 {activitydb.activity}
-                {/* Update activity */}
-                <p>Update</p>
-                <label>Update {activitydb.activity}:</label>
-                <input type="text" name="activity" value={updateActivity.activity} onChange={handleUpdateInput}/>
-                <button onClick={handleUpdate}>Update Activity</button>
+                <button onClick={toggleUpdate}>Update Current Activity</button>
+                {showUpdate && <Update updateActivity={updateActivity} handleUpdateInput={handleUpdateInput} handleUpdate={handleUpdate}/>}
             </div>
             </div>
     )

@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const data = require("./activitydb.json")
 const cors = require("cors");
-const fs = require("node:fs");
+const fs = require("fs");
 
 const app = express();
 
