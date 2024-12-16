@@ -2,7 +2,9 @@
 
 ## Description:
 
-A Christmas themed website under development. It contains a countdown timer until Christmas day and will contain an API where the user can generate a random Christmas themed activity with full CRUD operations.
+**Bringing a love of Christmas and a passion for programming together**
+
+Contains a countdown timer until Christmas day and will contain an API where the user can generate a random Christmas themed activity with full CRUD operations.
 
 A few activities have been hardcoded and data is stored in a local JSON file.
 
@@ -26,6 +28,14 @@ https://Christmas-generator.vercel.app/
 
 - Node/Express
 
+## Key Features:
+
+- Uses axios to handle HTTP requests.
+- Tested API endpoints using Postman
+- Heavy use of react hooks
+- Use of functional components and passing data via props
+
 ## Future Improvements/Features:
 
-- Database (mongoDB)
+- Database integration (mongoDB)
+- Toggle animation/music

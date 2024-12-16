@@ -58,7 +58,6 @@ app.patch("/:id", (req, res) => {
         const updateAct = activities.find(({id}) => (id === updateActivityId));
 
         updateAct.activity = updateActivity.activity
-        console.log(updateAct)
 
         // filter the array where all activities are not the current activity
         const filteredActs = activities.filter(({id}) => id !== updateActivityId);

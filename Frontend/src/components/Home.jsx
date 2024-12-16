@@ -12,6 +12,7 @@ const Home = () => {
     const [updateActivity, setUpdateActivity] = useState({});
     const [showUpdate, setShowUpdate] = useState(false);
     const [showCreate, setShowCreate] = useState(false);
+    const [showError, setShowError] = useState("");
 
 
     // For the input
@@ -33,17 +34,14 @@ const Home = () => {
     const handleClick = async () => {
         try{ 
             const response = await axios.get(backend_url);
-            
-            if(!response.ok) {
-                console.log("Unable to fetch acitivity");
-            }
             const obj = response.data;
             const random = Math.floor(Math.random() * obj.length);
             const randomObj = obj[random];
             setActivitydb(randomObj);
         }
-        catch (err){
-            console.log(`Error: ${err}`)
+        catch (error){
+            console.error(error.message)
+            setShowError("Error: Unable to retrieve activities")
         }
     };
 
@@ -83,18 +81,20 @@ const Home = () => {
         setShowCreate((showCreate) => !showCreate);
     };
 
+
     return(
         <div className="page-container">
             <div className="content-wrapper">
             <h1>Christmas Activity Generator!</h1>
             <p>Full of Turkey and all the trimmings? Wondering what to do next? Try the Christmas activity generator below:</p>
+            <p>{showError}</p>
             <button onClick={toggleCreate}>Create New Activity?</button>
                 {/* If showCreate is true then render Create component, othewise keep it hidden */}
                 {showCreate && <Create handleInput={handleInput} handleSubmit={handleSubmit} newActivity={newActivity} />}
                 <button onClick={handleClick}>Get Activity</button>
-                <button onClick={handleDelete}>Delete Activity</button>
                 {activitydb.activity}
-                <button onClick={toggleUpdate}>Update Current Activity</button>
+                <button onClick={handleDelete}>Delete Activity</button>
+                <button onClick={toggleUpdate}>Update Current Activity?</button>
                 {showUpdate && <Update updateActivity={updateActivity} handleUpdateInput={handleUpdateInput} handleUpdate={handleUpdate}/>}
             </div>
             </div>

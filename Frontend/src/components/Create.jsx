@@ -1,4 +1,4 @@
-// Pass update activity data from Home.jsx to Update component 
+// Pass update activity data from Home.jsx to child Update component 
 const Create = ({ newActivity, handleInput, handleSubmit}) => {
 
     return(
