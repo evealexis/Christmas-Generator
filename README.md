@@ -4,22 +4,13 @@
 
 **Bringing a love of Christmas and a passion for programming together**
 
-Contains a countdown timer until Christmas day and will contain an API where the user can generate a random Christmas themed activity with full CRUD operations.
-
-A few activities have been hardcoded and data is stored in a local JSON file.
-
-### User will be able to:
-
-- Generate a random activity
-- Edit an activity
-- Create an activity
-- Delete an activity
+Contains a countdown timer until Christmas day and the user can generate random christmas themed activities.
 
 ## Technologies Used:
 
 ### Front End:
 
-- React
+- Vite/React
 - HTML/CSS
 
 ### Back End:
