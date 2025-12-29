@@ -13,17 +13,6 @@ Contains a countdown timer until Christmas day and the user can generate random 
 - Vite/React
 - HTML/CSS
 
-### Back End:
-
-- Node/Express
-
-## Key Features:
-
-- Uses axios to handle HTTP requests.
-- Tested API endpoints using Postman
-- Heavy use of react hooks
-- Use of functional components and passing data via props
-
 ## Future Improvements/Features:
 
 - Database integration (mongoDB)
